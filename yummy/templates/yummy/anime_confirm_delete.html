@@ -1,0 +1,7 @@
+<a href="{% url 'animes' %}"></a>
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete this anime? "{{anime.title}}"</p>
+    <input type="submit" value="Delete">
+    <a href="{% url 'animes' %}">Go back</a>
+</form>

@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+{% block content%}
+<h1>Anime: {{anime.title}}</h1>
+<h4>Genre: {{anime.genre}}</h4>
+<h4>Popularity: {{anime.popularity}}</h4>
+<h4>Seasons: {{anime.seasons}}</h4>
+<h4>Description: {{anime.description}}</h4>
+{% include 'yummy/mediafile.html' %}
+
+{% if anime in favourites %}
+<form action="{% url 'remove_from_favorites' anime.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-primary">Remove from Favourites</button>
+</form>
+{% else %}
+<form action="{% url 'favourite_add' anime.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-primary">Add to Favourites</button>
+</form>
+{% endif %}
+{% endblock content %}

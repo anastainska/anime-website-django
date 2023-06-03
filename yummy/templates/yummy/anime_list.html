@@ -1,0 +1,35 @@
+{% extends './base.html' %}
+{% block content%}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Animes</h1>
+    <p class="lead">choose your fighter!!!!!!</p>
+</div>
+<div class="container">
+    <div class="d-flex flex-column">
+        <a href="{% url 'anime-create' %}">Add anime</a>
+<table>
+    <tr>
+        <th>
+            Animes
+        </th>
+        <th></th>
+    </tr>
+    {% for anime in animes %}
+    <tr>
+        <td>
+            {{anime.title}}
+        </td>
+        <td>
+            <a href="{% url 'anime' anime.id %}">View</a>
+            <a href="{% url 'anime-update' anime.id %}">Edit</a>
+            <a href="{% url 'anime-delete' anime.id %}">Delete</a>
+        </td>
+    </tr>
+    {% empty %}
+    <h3>No animes in list</h3>
+    {% endfor %}
+</table>
+    </div>
+</div>
+
+{% endblock content %}
